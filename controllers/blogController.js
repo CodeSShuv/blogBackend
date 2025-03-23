@@ -1,5 +1,5 @@
 const { Blog } = require("../models/Blog.js")
-const { User } = require("../models/User.js")
+// const { User } = require("../models/User.js")
 const handelGetBlog = async (req, res) => {
     const user = req.user
     const blog = await Blog.find({ userId: user.id })
@@ -13,17 +13,7 @@ const handelGetFeed = async (req, res) => {
 
     console.log(blog)
     if (!blog || blog.length === 0) return res.json({ msg: "no notes available" });
-    // const arr = blog.map((ele) => {
-    //     const modal = {
-    //         _id: ele._id,
-    //         userName:
-    //         title: ele.title,
-    //         content: ele.content,
-    //         visibility: ele.visibility,
-    //         createdAt: ele.createdAt,
-    //         updatedAt: ele.updatedAt,
-    //     }
-    // })
+ 
     res.json({ blogs: blog })
 }
 
