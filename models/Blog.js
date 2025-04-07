@@ -4,8 +4,8 @@ const blogSchema = new Schema({
     ,
     title:String,
     content:String,
-    visibility:String
-
+    visibility:String,
+    
     
 }, { timestamps: true });
 const Blog = model("Blog", blogSchema);

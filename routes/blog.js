@@ -1,18 +1,19 @@
 const {Router} = require("express");
-const {loggedInUserOnly} = require("../middlewares/loggedInUserOnly.js")
+
 const {handelGetBlog ,handelGetFeed,
      handelPostBlog,
-    handelDeleteBlog} = require("../controllers/blogController.js");
+    handelDeleteBlog, handelGetBlogContent , handelUpdateBlog} = require("../controllers/blogController.js");
 
 
 
 const blogRouter = Router();
 
-blogRouter.get("/",loggedInUserOnly,handelGetBlog );
-blogRouter.get("/feed",loggedInUserOnly, handelGetFeed);
-
-blogRouter.post("/publish",loggedInUserOnly,handelPostBlog)
-blogRouter.delete("/items/:id",loggedInUserOnly, handelDeleteBlog);
+blogRouter.get("/",handelGetBlog );
+blogRouter.get("/feed", handelGetFeed);
+blogRouter.get("/:id",handelGetBlogContent)
+blogRouter.post("/publish",handelPostBlog)
+blogRouter.delete("/items/:id", handelDeleteBlog);
+blogRouter.post('/update/:id' ,handelUpdateBlog);
 
 
 
