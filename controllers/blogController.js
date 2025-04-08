@@ -39,7 +39,9 @@ const handelPostBlog = async (req, res) => {
         userId: user.id,
         title: title,
         content: content,
-        visibility: visibility
+        visibility: visibility,
+        likesCount:0,
+        commentsCount:0
     });
     await blog.save();
     res.status(200).json({ msg: "blog published" });

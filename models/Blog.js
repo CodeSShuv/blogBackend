@@ -5,7 +5,8 @@ const blogSchema = new Schema({
     title:String,
     content:String,
     visibility:String,
-    likesCount:{type:Number, default:0}
+    likesCount:{type:Number, default:0},
+    commentsCount:{type:Number, default:0}
     
 }, { timestamps: true });
 const Blog = model("Blog", blogSchema);
