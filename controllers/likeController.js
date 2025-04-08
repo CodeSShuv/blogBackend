@@ -24,7 +24,7 @@ const handelLikeReq = async (req, res) => {
         } else {
             //Already Liked, Then Unlike the blog 
             await Like.deleteOne({ _id: existingLike._id });
-            const newLikeCount =( await getLikesCount(blogId)-1);
+            const newLikeCount =( await getLikesCount(blogId)+1);
             await Blog.updateOne({ _id: blogId }, { $set: { likesCount: newLikeCount } });
 
             res.status(200).json({ msg: "Unliked" })
