@@ -1,12 +1,12 @@
-const { Blog } = require("../models/Blog.js")
-
+const { Blog,Link } = require("../models/Blog.js")
+const {getLikesCount} = require("../services/getLikesCount.js");
 // const { User } = require("../models/User.js");
 
 //Getting all private and  public notes .
 const handelGetBlog = async (req, res) => {
     const user = req.user
     const blog = await Blog.find({ userId: user.id })
-
+    
     if (!blog || blog.length === 0) return res.json({ msg: "no notes Available" })
     res.json({ blogs: blog })
 }
@@ -21,8 +21,9 @@ const handelGetBlogContent = async (req,res)=>{
 }
 //Feed Creation.
 const handelGetFeed = async (req, res) => {
+    
     const blog = await Blog.find({ visibility: "Public" }).populate("userId", "firstName lastName");
-
+    
  
     if (!blog || blog.length === 0) return res.json({ msg: "no notes available" });
  
