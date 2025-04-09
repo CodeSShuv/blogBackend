@@ -17,7 +17,7 @@ app.use(cookieParser())
 app.use("/auth",signUpRouter);
 app.use("/profile",profileRouter);
 app.use("/blogs",loggedInUserOnly,blogRouter );
-app.use("/like",loggedInUserOnly,likeRouter);
+app.use("/like",likeRouter);
 app.use("/comment", loggedInUserOnly, commentRouter);
 app.listen(8080, ()=>{
     console.log("Server listening at 8080 . ");

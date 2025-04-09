@@ -22,7 +22,7 @@ const handelGetBlogContent = async (req,res)=>{
 //Feed Creation.
 const handelGetFeed = async (req, res) => {
     
-    const blog = await Blog.find({ visibility: "Public" }).populate("userId", "firstName lastName");
+    const blog = await Blog.find({ visibility: "Public" }).populate("userId", "_id firstName lastName");
     
  
     if (!blog || blog.length === 0) return res.json({ msg: "no notes available" });
