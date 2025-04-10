@@ -6,7 +6,7 @@ const getCommentsCount = async(blogId)=>{
     try{
 
         const totalCount = await Comment.countDocuments({blogId:blogId});
-        console.log(totalCount)
+        // console.log(totalCount)
         return totalCount;
     }catch{
         return null;
@@ -24,7 +24,7 @@ const handelPostComment = async(req,res)=>{
     try{
         const commentInstance =  new Comment({blogId : blogId, commentedBY:userId, comment:comment});
        
-       const  result =  await commentInstance.save();
+        await commentInstance.save();
    
         const newCount =await getCommentsCount(blogId);
         

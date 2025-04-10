@@ -21,13 +21,18 @@ const handelGetBlogContent = async (req,res)=>{
 }
 //Feed Creation.
 const handelGetFeed = async (req, res) => {
-    
-    const blog = await Blog.find({ visibility: "Public" }).populate("userId", "_id firstName lastName");
+    try {
+        const blog = await Blog.find({ visibility: "Public" }).populate("userId", "_id firstName lastName");
     
  
-    if (!blog || blog.length === 0) return res.json({ msg: "no notes available" });
- 
-    res.json({ blogs: blog })
+        if (!blog || blog.length === 0) return res.json({ msg: "no notes available" });
+     
+        res.json({ blogs: blog })
+    } catch (error) {
+        res.status(500).json({msg:"Internal Server Error"});
+    }
+    
+   
 } 
 
 //Inserting new blogs 

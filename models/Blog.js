@@ -4,7 +4,7 @@ const blogSchema = new Schema({
     ,
     title:String,
     content:String,
-    visibility:String,
+    visibility:{type: String, require:true},
     likesCount:{type:Number, default:0},
     commentsCount:{type:Number, default:0}
     
